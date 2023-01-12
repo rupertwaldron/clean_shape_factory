@@ -1,4 +1,6 @@
 rootProject.name = 'ShapeAbstractFactory'
 include 'Shapes'
 include 'ShapeApp'
+include 'BadShapeApp'
+include 'BadShapes'
 

@@ -24,6 +24,8 @@ repositories {
 dependencies {
     implementation project (':Shapes')
     implementation project (':ShapeApp')
+    implementation project (':BadShapes')
+    implementation project (':BadShapeApp')
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }
@@ -66,43 +68,43 @@ tasks.register('runJar', JavaExec) {
 }
 
 
-class TimingsListener implements TaskExecutionListener, BuildListener {
-    private Clock clock
-    private timings = []
-
-    @Override
-    void beforeExecute(Task task) {
-        clock = new Clock()
-    }
-
-    @Override
-    void afterExecute(Task task, TaskState taskState) {
-        def ms = clock.timeInMs
-        timings.add([ms, task.path])
-        task.project.logger.warn "${task.path} took ${ms}ms"
-    }
-
-    @Override
-    void buildFinished(BuildResult result) {
-        println "Task timings:"
-        for (timing in timings) {
-            if (timing[0] >= 50) {
-                printf "%7sms  %s\n", timing
-            }
-        }
-    }
-
-    @Override
-    void buildStarted(Gradle gradle) {}
-
-    @Override
-    void projectsEvaluated(Gradle gradle) {}
-
-    @Override
-    void projectsLoaded(Gradle gradle) {}
-
-    @Override
-    void settingsEvaluated(Settings settings) {}
-}
-
-gradle.addListener new TimingsListener()
+//class TimingsListener implements TaskExecutionListener, BuildListener {
+//    private Clock clock
+//    private timings = []
+//
+//    @Override
+//    void beforeExecute(Task task) {
+//        clock = new Clock()
+//    }
+//
+//    @Override
+//    void afterExecute(Task task, TaskState taskState) {
+//        def ms = clock.timeInMs
+//        timings.add([ms, task.path])
+//        task.project.logger.warn "${task.path} took ${ms}ms"
+//    }
+//
+//    @Override
+//    void buildFinished(BuildResult result) {
+//        println "Task timings:"
+//        for (timing in timings) {
+//            if (timing[0] >= 50) {
+//                printf "%7sms  %s\n", timing
+//            }
+//        }
+//    }
+//
+//    @Override
+//    void buildStarted(Gradle gradle) {}
+//
+//    @Override
+//    void projectsEvaluated(Gradle gradle) {}
+//
+//    @Override
+//    void projectsLoaded(Gradle gradle) {}
+//
+//    @Override
+//    void settingsEvaluated(Settings settings) {}
+//}
+//
+//gradle.addListener new TimingsListener()
