@@ -13,8 +13,8 @@ public class ShapeApp {
     }
 
     public void run() {
-        Shape circle = shapeFactory.make("circle");
-        Shape square = shapeFactory.make("square");
+        Shape circle = shapeFactory.make(ShapeType.CIRCLE);
+        Shape square = shapeFactory.make(ShapeType.SQUARE);
         System.out.println("Creating shapes");
         shapes.add(circle);
         shapes.add(square);

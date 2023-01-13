@@ -5,10 +5,10 @@ public class ShapeFactoryImpl implements ShapeFactory {
 
     private static final Point point = new Point(1.0, 1.0);
 
-    public Shape make(String shapeName) {
+    public Shape make(ShapeType shapeName) {
         return switch(shapeName) {
-            case "circle" -> makeCircle(point, 3.0);
-            case "square" -> makeSquare(point, 3.0);
+            case CIRCLE -> makeCircle(point, 3.0);
+            case SQUARE -> makeSquare(point, 3.0);
             default -> throw new IllegalStateException("Unexpected value: " + shapeName);
         };
     }
